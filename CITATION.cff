@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: If you use this template, please cite it.
+title: Open Hydraulic Engineering Data Project — Student Starter
+type: software
+authors:
+  - family-names: YourSurname
+    given-names: YourName
+keywords:
+  - hydraulics
+  - GDAL
+  - Python
+license: MIT
+repository-code: https://github.com/your-org/your-repo

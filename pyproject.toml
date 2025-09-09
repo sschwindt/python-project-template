@@ -1,0 +1,16 @@
+[project]
+name = "wrr-project"
+version = "0.1.0"
+description = "Starter WRR analysis with Python and GDAL"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name="Student Team"}]
+
+[tool.black]
+line-length = 100
+
+[tool.pytest.ini_options]
+addopts = "-q"
+markers = [
+  "heavy: marks tests that are heavy or require GDAL data (deselect with '-m "not heavy"')"
+]
