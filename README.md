@@ -29,8 +29,7 @@ Either use conda, or light-weight mamba:
 ├── .pre-commit-config.yaml
 ├── .gitignore
 ├── notebooks/
-├── src/hydraulics/
-├── tests/
+├── src/wrr/
 ├── data/            # not tracked; add links and checksums to data/README.md
 ├── gdal/
 ├── prompts/
@@ -39,8 +38,8 @@ Either use conda, or light-weight mamba:
 ```
 
 ## What you must customize
-1. Edit `notebooks/01_methods_walkthrough.ipynb` with your site, flows, and parameters.
-2. Replace placeholder GDAL steps in `src/hydraulics/gdal_utils.py` with your AOI (area of interest) and CRS.
+1. Edit `notebooks/results_discussions.ipynb` with your site, flows, and parameters.
+2. Replace placeholder GDAL steps in `src/wrr/gdal_utils.py` with your AOI (area of interest) and CRS.
 3. Fill `data/README.md` with your sources, licenses, and checksums.
 4. Keep the AI diary in `prompts/AI_DIARY_TEMPLATE.md` up to date.
 
@@ -57,6 +56,5 @@ make all       # data + build + test
 
 ## Notes
 
-* Heavy geospatial libraries are installed from conda-forge via `environment.yml` for reliability.
-* The default GitHub Action lints and runs light tests. Mark heavy tests with `@pytest.mark.heavy` to skip in CI.
+Heavy geospatial libraries (1+ GB) are installed from conda-forge via `environment.yml` for reliability.
 
