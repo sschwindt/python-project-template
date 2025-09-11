@@ -1,16 +1,23 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "wrr-project"
-version = "0.1.0"
-description = "Starter WRR analysis with Python and GDAL"
+name = "wrr"
+version = "0.0.1"
+description = "WRR geodata project starter"
 readme = "README.md"
 requires-python = ">=3.11"
-authors = [{name="Student Team"}]
+authors = [{ name = "Your Name", email = "you@example.com" }]
+dependencies = []
 
-[tool.black]
-line-length = 100
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "black"]
 
-[tool.pytest.ini_options]
-addopts = "-q"
-markers = [
-  "heavy: marks tests that are heavy or require GDAL data (deselect with '-m "not heavy"')"
-]
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["wrr*"]
+
