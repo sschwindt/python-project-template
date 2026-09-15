@@ -1,13 +1,19 @@
+# Reproducible project environment. Create it FROM THE REPO ROOT with:
+#   mamba env create -f environment.yml
+# (the last line installs this project's own code, so the folder matters)
 name: wrr-proj
 channels:
   - conda-forge
 dependencies:
-  - python=3.11
+  - python=3.14
+  # scientific core
   - numpy
   - pandas
   - scipy
   - matplotlib
-  - jupyter
+  # notebooks
+  - jupyterlab
+  # geospatial stack (heavy, ~1+ GB; conda-forge builds are the reliable way to get GDAL)
   - geopandas
   - shapely
   - pyproj
@@ -16,8 +22,10 @@ dependencies:
   - gdal
   - xarray
   - dask
+  # development tools
   - pytest
+  - ruff=0.16  # keep in sync with .pre-commit-config.yaml and pyproject.toml
+  - pre-commit
   - pip
   - pip:
-      - black
-      - ruff
+      - -e .  # install src/wrr as an editable package, so `from wrr import ...` works everywhere

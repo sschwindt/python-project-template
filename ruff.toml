@@ -1,3 +1,20 @@
+# Ruff is the single code-quality tool here: it lints AND formats
+# (it replaces the older flake8 + black + isort combination).
+line-length = 100  # a bit wider than default: hydraulic formulas get long
+target-version = "py314"
+
 [lint]
-select = ["E","W","F","I"]
+select = [
+    "E", "W", # pycodestyle: spacing, indentation, line length
+    "F",      # pyflakes: undefined names, unused imports/variables
+    "I",      # isort: consistent import ordering
+    "UP",     # pyupgrade: modern Python syntax
+    "B",      # bugbear: likely bugs (e.g. mutable default arguments)
+    "NPY",    # numpy-specific pitfalls
+]
 ignore = []
+
+[lint.per-file-ignores]
+# tests use pytest.importorskip() before imports, which trips the
+# "imports must come first" rule (E402) - that is fine in tests
+"tests/*" = ["E402"]

@@ -1,10 +1,16 @@
+# Run automatically before every commit after a one-time `pre-commit install`.
+# Update hook versions later with: pre-commit autoupdate
 repos:
-  - repo: https://github.com/psf/black
-    rev: 24.4.2
-    hooks:
-      - id: black
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.6.1
+    rev: v0.16.7 # keep in sync with the ruff version in environment.yml
     hooks:
-      - id: ruff
+      - id: ruff-check
         args: [--fix]
+      - id: ruff-format
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files # keeps rasters/DEMs out of git history
+        args: [--maxkb=5000]
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
